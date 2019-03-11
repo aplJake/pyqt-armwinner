@@ -133,7 +133,7 @@ class Main(QMainWindow, Ui_MainWindow):
                 writeJSON = json_report.WriteJSON(filePath=filePath + ".json")
                 json = writeJSON.saveMainTM(modelData=modelData)
             
-                sortedJSON = sorted(json["player_long"], key=lambda x: int(x["номер"]), reverse=True)
+                sortedJSON = sorted(json["player_long"], key=lambda x: int(x["место"]), reverse=False)
                 # clear the model and populate empty model 
                 self.mainTM.updateView()
 

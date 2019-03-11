@@ -135,6 +135,17 @@ class EliminationTMDLL:
         self.formPlayingPairs()
         return indexItem
 
+    def populateIndex(self):
+        rows = self.getRowCount()
+        counter = 0
+        for row in range(rows):
+            if row % 2 == 0:
+                # strIndex = str(int(lastPairIndex)+1)
+                counter += 1
+                self.tableModel.setItem(row, 0, QStandardItem(str(counter)))
+            else:
+                self.tableModel.setItem(row, 0, QStandardItem(str(counter)))
+
     # setter for winner oclumn in champ tables
     def isWinner(self, row, value, column=2):
         self.tableModel.setItem(row, column, QStandardItem(str(value)))
@@ -143,6 +154,9 @@ class EliminationTMDLL:
     def push(self, data):
         # insert an empty row
         self.tableModel.insertRow(0)
+        # insert row and update all rows in the table model
+        self.tableModel.setItem(0, 0, QStandardItem(str(1)))
+        self.populateIndex()
         self.tableModel.setItem(0, 1, QStandardItem(str(data)))
         self.formPlayingPairs()
         return self.tableModel.index(0, 1)
