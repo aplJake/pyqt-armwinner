@@ -160,7 +160,7 @@ class ChampTableIterator:
                 modelB.data.addData(loser)
             updateDialog()
         elif modeType in (ModelTypes.SECOND_TOUR_B, ModelTypes.THIRD_TOUR_B, ModelTypes.FOURTH_TOUR_B):
-            if self.currentTourNode.data.getRowCount() > 2:
+            if self.currentTourNode.data.getRowCount() > 2 or self.champTMDLL.getSemiFinalModel().data.getRowCount() == 0:
                 modelB = self.currentTourNode.nextTour.nextTour
             else:
                 modelB = self.champTMDLL.getSemiFinalModel()
@@ -188,7 +188,7 @@ class ChampTableIterator:
                 # self.placeID -= 1
             updateDialog()
         elif modeType in (ModelTypes.FIFTH_TOUR_B, ModelTypes.SIXTH_TOUR_B, ModelTypes.SEVENTH_TOUR_B, ModelTypes.EIGHTH_TOUR_B):
-            if self.currentTourNode.data.getRowCount() > 2:
+            if self.currentTourNode.data.getRowCount() > 2 or self.champTMDLL.getSemiFinalModel().data.getRowCount() == 0:
                 modelB = self.currentTourNode.nextTour
             else:
                 modelB = self.champTMDLL.getSemiFinalModel()
@@ -289,6 +289,8 @@ class ChampTableIterator:
         print("*"*50)
 
     def returnModelHistory(self):
+        # print report of memory buffer
+        print(self.scoreHistoryStack)
 
         def updateDialog():
             # update data in QDialog

@@ -53,3 +53,10 @@ class PlayerAdd(QDialog, Ui_addPlayerQObject):
 
     def cancelAddPlayerAction(self):
         self.close()
+    
+    @staticmethod
+    def showAlertMsg(title, msg):
+        msgBox = QMessageBox()
+        msgBox.setWindowTitle(str(title))
+        msgBox.setText(str(msg))
+        msgBox.exec_()

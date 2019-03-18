@@ -58,3 +58,10 @@ class PlayingPair(QDialog, Ui_Fighting):
             self.iterator.returnModelHistory()
         except Exception as e:
             self.showAlertMsg("Warning", f"Error type 3 {e}")
+    
+    @staticmethod
+    def showAlertMsg(title, msg):
+        msgBox = QMessageBox()
+        msgBox.setWindowTitle(str(title))
+        msgBox.setText(str(msg))
+        msgBox.exec_()

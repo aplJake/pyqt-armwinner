@@ -1,6 +1,6 @@
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QColor
 from PyQt5.QtCore import Qt, QModelIndex
-
+from PyQt5.QtWidgets import QMessageBox
 from utils import table_style
 from helpers.report import json_report
 
@@ -94,6 +94,12 @@ class MainPlayersTM:
         self.tableModel.setHorizontalHeaderLabels(header)
         self.customizeTableViewUI(self.tableView)
 
+    @staticmethod
+    def showAlertMsg(title, msg):
+        msgBox = QMessageBox()
+        msgBox.setWindowTitle(str(title))
+        msgBox.setText(str(msg))
+        msgBox.exec_()
 
     @staticmethod
     def customizeTableViewUI(tableView):
